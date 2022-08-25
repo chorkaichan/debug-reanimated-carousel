@@ -1,12 +1,36 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { View, Text, Modal, StyleSheet, Dimensions } from 'react-native';
+import Carousel from 'react-native-reanimated-carousel';
+
+const data = [ 1, 2, 3 ];
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <Modal
+      visible
+    >
+      <View style={styles.container}>
+        <Carousel
+          data={data}
+          renderItem={({ item }) => (
+            <View
+              style={{
+                backgroundColor: 'gray',
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                flex: 1,
+              }}
+            >
+              <Text>
+                {item}
+              </Text>
+            </View>
+          )}
+          width={Dimensions.get('window').width}
+        />
+      </View>
+    </Modal>
   );
 }
 
